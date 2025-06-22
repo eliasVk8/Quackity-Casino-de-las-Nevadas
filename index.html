@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casino de Las Nevadas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(#2b0000, #000);
+      color: gold;
+      text-align: center;
+    }
+    header {
+      background-color: #8b0000;
+      padding: 1rem;
+      border-bottom: 2px solid gold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    .quackity-img {
+      width: 200px;
+      margin: 1rem auto;
+      display: block;
+      border-radius: 1rem;
+    }
+    .players {
+      margin: 2rem auto;
+      max-width: 600px;
+      background: #1a0000;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px gold;
+    }
+    .players table {
+      width: 100%;
+      border-collapse: collapse;
+      color: white;
+    }
+    .players th, .players td {
+      padding: 0.5rem;
+      border: 1px solid gold;
+    }
+    button {
+      background: gold;
+      color: black;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #ffcc00;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎰 Bienvenido al Casino de Las Nevadas 🎰</h1>
+  </header>
+
+  <img src="https://i.imgur.com/E3R1JXe.png" alt="Quackity" class="quackity-img" />
+
+  <div class="players">
+    <h2>Jugadores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Monedas</th>
+          <th>Tickets</th>
+        </tr>
+      </thead>
+      <tbody id="playerData">
+      </tbody>
+    </table>
+    <button onclick="jugarTragamonedas()">🎲 Jugar Tragamonedas</button>
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    const datos = [
+      { nombre: "Carlos", monedas: 50, tickets: 3 },
+      { nombre: "Juan", monedas: 35, tickets: 5 },
+      { nombre: "Daniela", monedas: 80, tickets: 7 }
+    ];
+
+    function cargarJugadores() {
+      const tabla = document.getElementById("playerData");
+      tabla.innerHTML = "";
+      datos.forEach((jugador) => {
+        tabla.innerHTML += `
+          <tr>
+            <td>${jugador.nombre}</td>
+            <td>${jugador.monedas}</td>
+            <td>${jugador.tickets}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function jugarTragamonedas() {
+      const resultado = document.getElementById("resultado");
+      const premio = Math.random() < 0.4;
+      resultado.innerText = premio ? "¡Ganaste un ticket! 🎉" : "Nada esta vez. Intenta de nuevo.";
+    }
+
+    cargarJugadores();
+  </script>
+</body>
+</html>
